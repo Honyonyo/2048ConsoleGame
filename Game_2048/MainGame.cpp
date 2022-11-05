@@ -306,6 +306,7 @@ Game2048::~Game2048()
 #pragma endregion
 
 #pragma region Class MainGame
+//2048게임 4*4 보드 출력 함수 ( mainGamePage에서 호출)
 void MainGame::printBoard() {
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
@@ -344,14 +345,71 @@ void MainGame::printBoard() {
 		cout << endl;
 	}
 }
-void MainGame::tilePage()
+
+//제일 처음 뜨는 타이틀페이지 호출
+short MainGame::tilePage()
 {
-	graphic.printTitle(1);
+	//각 키 입력에 따라 동작함.
+	graphic.printTitle(coin);
+	if (_kbhit) {
+		switch (_getch()) {
+		case 0:
+			switch (_getch()) {
+			case 59:
+				return HELP;
+				break;
+
+			case 60:
+				return SHOP;
+				break;
+			}
+			  break;
+
+		case 49:
+			if (++coin > 99) {
+				gotoXY(1, 44);
+
+				txtcolor(4, 7);
+				gotoXY(21, 45);
+				cout << "¤ COIN = ";
+				cout.width(3);
+				cout << coin << " ¤";
+				gotoXY(1, 47);
+
+				cout << "과욕은 금물입니다 . . . ";
+				coin=10;
+				system("PAUSE");				
+			}
+			txtcolor(15);
+			return TITLE;
+			break;
+
+		default:
+			key = 0;
+			system("cls");
+			return GAME;
+		}
+	}
+
 }
+
+//도움말 페이지 호출 (덜구현)
+short MainGame::helpPage() {
+	graphic.printHelp();
+	while (1) { 
+		int btn = _getch();
+		if (btn == 27) 
+			return TITLE; }
+}
+
+//상점 페이지 (미구현)
+short MainGame::itemPage() {
+	while (1) { if (_getch() == 27) return TITLE; }
+}
+
 //게임실행화면 출력하기
-void MainGame::maingGamePage() {
-
-
+short MainGame::mainGamePage() {
+	key = 0;
 	do {
 		graphic.printGamePage();
 
@@ -364,7 +422,6 @@ void MainGame::maingGamePage() {
 				gameBoard[i][j] = game.getGameBoard(i, j);
 			}
 		}
-
 		printBoard();
 
 		do {
@@ -404,19 +461,21 @@ void MainGame::maingGamePage() {
 
 		//goStop return false로 게임 종료시
 		txtcolor(15, 3);
-		gotoXY(25, 17);
+		short x = 16;
+		gotoXY(25, x);
 		cout << "게임 종료!";
 		txtcolor(15, 0);
 		txtcolor(15, 3);
-		gotoXY(16, 18);
+		gotoXY(16, x+1);
 		printf("%3d턴동안 %4d까지 만들었다!\n", game.getTurn(), game.getHigh());
 		txtcolor(15, 0);
-		gotoXY(13, 19);
+		gotoXY(13, x+2);
 		cout << "나가려면 ESC, 다시 하려면 SPACEbar";
 
 		while (1) {
 			key = _getch();
-			if ((key == 27) || (key == 32)) break;
+			if (key == 27) return TITLE;
+			if (key == 32) break;
 		}
 	} while (key == 32);
 
@@ -424,9 +483,32 @@ void MainGame::maingGamePage() {
 
 MainGame::MainGame()
 {
+	short pageBtn = tilePage();
+	while (1) {
+
+		switch (pageBtn) {
+		case TITLE : 
+			system("cls");
+			pageBtn = tilePage();
+			break;
+		case HELP: 
+			system("cls"); 
+			pageBtn = helpPage();
+			break;
+		case SHOP :
+			system("cls"); 
+			pageBtn = itemPage();
+			break;
+		case GAME: 
+			system("cls"); 
+			pageBtn = mainGamePage();
+			break;
+		}
+	}
 }
 
 MainGame::~MainGame()
 {
+	
 }
 #pragma endregion

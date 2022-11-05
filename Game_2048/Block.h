@@ -11,9 +11,13 @@
 
 using namespace std;
 
-#define MAIN 0
-#define HELP 1
-#define SHOP 2
+/*
+주요 키워드들을 #define으로 숫자 선언해준 뒤 편리하게 이용함
+*/
+#define TITLE 00
+#define HELP 100
+#define SHOP 200
+#define GAME 300
 
 #define BLOCK_2 0
 #define BLOCK_4 1
@@ -44,7 +48,7 @@ static void txtcolor(int tcolor, int bcolor)
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 
 }
-static void gotoXY(int X, int Y) {
+static void gotoXY(short X, short Y) {
 	COORD pos = { X,Y };
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 }
@@ -69,7 +73,10 @@ static string utf32_to_utf8(std::u32string utf32_string)
 }
 
 
-
+/*
+파일입출력시 특수문자 껴있는 경우 깨질 수도 있으니
+메모장에서 인코딩 utf-8로 해줘야한다.
+*/
 class Block
 
 {
@@ -77,6 +84,8 @@ private:
 	int number;
 	int pointX=0;
 	int pointY;
+	string textsetting;
+	string language = "kor";	//언어팩 설정하기
 
 	//숫자 블록 색깔담당자
 	const int numBlockColor[11][6][6] =
@@ -221,7 +230,7 @@ private:
 	};
 
 
-#pragma region 로고아이콘
+#pragma region 로고아이콘	//로고를 파일입출력으로 받게되어 사용하지 않게 됨
 	int logoColor_MAIN[13][16] = {
 	{ 0,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  0,  0 },
 	{ 0,  8,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  8,  0,  0 },
@@ -250,7 +259,6 @@ private:
 		{  0,  0,226,  0,226,  0,226,  0,  0,  0,226,  0,  0,  0,226,  0,  0,  0,  0,  0},
 		{  0,  0,226,  0,226,  0,226,226,226,  0,226,226,226,  0,226,  0, 14, 14, 14, 15},
 	};
-	/*csv/str_toc*/
 	int logoColor_SHOP[11][20] = {
 		{  0,  0,255,255,255,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,255,255,255,  0,  0},
 		{  0,  0,  0,  0,255,  0,255,255,255,  0,255,  0,255,  0,  0,255,  0,255,  0,  0},
@@ -265,10 +273,16 @@ private:
 		{ 0, 0,62,62,62, 3, 0,51, 0,51, 0, 3,62,62, 3, 0,51, 0, 0, 0}
  };
 	
-	//함수 printLogo(MAIN / HELP / SHOP)처럼 꺼내쓸 수 있도록 각각 define으로 0 1 2 정의하고 갈무리함
-	int* logoColor_[3]={&logoColor_MAIN, &logoColor_HELP, &logoColor_SHOP};
+	/*csv/str_toc*/
+	//함수 printLogo(MAIN / HELP / SHOP)처럼 값 받아서 꺼내쓸 수 있도록 파일입출력형태 도입(fstream필요)
+	//int ** logoColor;
+	//int** logo;
 
+	//char* 진짜못해먹겠다
+	//아니그냥다못해먹겟다
+	//
 
+	
 	//_MAIN화면 로고
 	const string logo_MAIN[13][16] = {
 		{"  ", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "  ", "  "},
@@ -300,10 +314,6 @@ private:
 	};
 
 	//_SHOP화면 로고
-	const string logo_SHOP[11][20]{
-
-	};
-
 #pragma endregion
 	
 	string gamePage_upLine1 = utf16_to_utf8(u"————————————————————————————————————————————————————————————");
@@ -319,10 +329,7 @@ private:
 	변수를 key에 넣으면 그에 맞는 밸류함수를 받아오는거지
 	*/
 
-	/*
-	주요 키워드들을 #define으로 숫자 선언해준 뒤
 
-	*/
 
 
 
@@ -330,10 +337,16 @@ public:
 
 	Block();
 	~Block();
-	void printLogo(int name, int X, int Y);
+	void setLang(string lang) { this->language = lang; textsetting = "text_" + lang; }
+
+	void printLogo(string name, int X, int Y);
 
 	//가장 첫 게임 실행페이지
 	void printTitle(int coin);
+
+	void printHelp();
+
+	void printShop();
 
 	
 	void printBlock(int number, int X, int Y);
