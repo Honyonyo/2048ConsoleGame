@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\6464r\OneDrive\Documents\GitHub\game_2048-\Game_2048\</FILEPATH>
+      <FILENAME>Main.cpp</FILENAME>
+      <LINE>11</LINE>
+      <COLUMN>4</COLUMN>
+    </SFA>
+    <DEFECTCODE>6262</DEFECTCODE>
+    <DESCRIPTION>함수가 스택의 '47456' 바이트를 사용합니다.  일부 데이터를 힙으로 이동하는 것이 좋습니다.</DESCRIPTION>
+    <FUNCTION>main</FUNCTION>
+    <DECORATED>main</DECORATED>
+    <FUNCLINE>11</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

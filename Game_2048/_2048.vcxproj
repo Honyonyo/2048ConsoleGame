@@ -129,18 +129,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Graphic.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainGame.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Block.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Graphic.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="trashcan.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Logo2048_img.txt" />
+    <Text Include="text_kor.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="resource\bip.mp3" />
+    <Media Include="resource\bip_2.mp3" />
+    <Media Include="resource\fire_growup.mp3" />
+    <Media Include="resource\mouse_click.mp3" />
+    <Media Include="resource\opencap.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="logoColor_HELP.CSV" />
+    <None Include="logoColor_MAIN.csv" />
+    <None Include="logoColor_SHOP.CSV" />
+    <None Include="logo_HELP.CSV" />
+    <None Include="logo_MAIN.csv" />
+    <None Include="logo_SHOP.CSV" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="text_kor.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,89 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C6262",
+          "message": {
+            "text": "함수가 스택의 '47456' 바이트를 사용합니다.  일부 데이터를 힙으로 이동하는 것이 좋습니다."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/6464r/OneDrive/Documents/GitHub/game_2048-/Game_2048/Main.cpp"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 5,
+                  "endLine": 11,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "main",
+                  "decoratedName": "main",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.33.31630.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/Users/6464r/OneDrive/Documents/GitHub/game_2048-/Game_2048/Main.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "b9e329767f0abd19634e1da8b58c79cfa3f8b9f643d1733dc32edb95fa36b240"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/6464r/onedrive/documents/github/game_2048-/game_2048/maingame.h"
+          },
+          "hashes": {
+            "sha-256": "72760e918116f214967995ad4b44293f7679c392155b68c12e2de5147178c7d0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/6464r/onedrive/documents/github/game_2048-/game_2048/graphic.h"
+          },
+          "hashes": {
+            "sha-256": "a6390b5d8b967107e91087b78c9b7e7b684e752e2bf9389eddd84b90bac99006"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/6464r/onedrive/documents/github/game_2048-/game_2048/game.h"
+          },
+          "hashes": {
+            "sha-256": "540a0a1573c3ce6f77b5ba669ce1fb46b2ba18f5e163c6f79294b394abc93247"
+          }
+        }
+      ]
+    }
+  ]
+}

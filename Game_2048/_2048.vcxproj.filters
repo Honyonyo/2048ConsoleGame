@@ -13,23 +13,30 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="리소스 파일\sound">
+      <UniqueIdentifier>{60041444-237d-49e0-9151-95b2c6619fd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="리소스 파일\언어팩">
+      <UniqueIdentifier>{0d64eff2-5b24-4fcb-b0cf-c9ce96e152e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="MainGame.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Block.cpp">
+    <ClCompile Include="Graphic.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Block.h">
+    <ClInclude Include="Graphic.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
@@ -38,10 +45,58 @@
     <ClInclude Include="trashcan.h">
       <Filter>리소스 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Logo2048_img.txt">
       <Filter>리소스 파일</Filter>
     </Text>
+    <Text Include="text_kor.txt">
+      <Filter>리소스 파일\언어팩</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="resource\bip.mp3">
+      <Filter>리소스 파일\sound</Filter>
+    </Media>
+    <Media Include="resource\bip_2.mp3">
+      <Filter>리소스 파일\sound</Filter>
+    </Media>
+    <Media Include="resource\fire_growup.mp3">
+      <Filter>리소스 파일\sound</Filter>
+    </Media>
+    <Media Include="resource\mouse_click.mp3">
+      <Filter>리소스 파일\sound</Filter>
+    </Media>
+    <Media Include="resource\opencap.mp3">
+      <Filter>리소스 파일\sound</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="logo_HELP.CSV">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="logo_MAIN.csv">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="logoColor_HELP.CSV">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="logoColor_MAIN.csv">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="logo_SHOP.CSV">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="logoColor_SHOP.CSV">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="text_kor.xml">
+      <Filter>리소스 파일\언어팩</Filter>
+    </Xml>
   </ItemGroup>
 </Project>
