@@ -11,13 +11,9 @@
 
 #include "Graphic.h"
 
-
 using namespace std;
 
-
 /*화면에 보이지 않는 미니보드가 백그라운드에서 돌아간다*/
-
-
 class Item
 {
 private:
@@ -172,8 +168,6 @@ private:
 	ItemShake shaker;
 
 	random_device random;
-
-
 
 public:
 

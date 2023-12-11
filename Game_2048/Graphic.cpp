@@ -1,6 +1,6 @@
 ﻿#include "Graphic.h"
 
-Block::Block()
+cGraphic::cGraphic()
 {
 	for (int i = 6; i < sizeof(boardLine) / sizeof(*boardLine); i += 7) {
 		for (int j = 0; j < sizeof(boardLine[0]) / sizeof(*boardLine[0]); j++) {
@@ -18,11 +18,11 @@ Block::Block()
 #pragma endretion
 }
 
-Block::~Block()
+cGraphic::~cGraphic()
 {
 }
 
-void Block::setLang(string lang) {
+void cGraphic::setLang(string lang) {
 	//lang 관련 vector 비워주기
 	if (about_game.begin() != about_game.end()) {
 		iter = about_game.end();
@@ -53,7 +53,7 @@ void Block::setLang(string lang) {
 
 	bool breaker = 1;
 	while (breaker && getline(file_lang, buffer)) {
-		if (buffer == "<HELP>") {
+		if (buffer == "<SCENE_HELP>") {
 			while (breaker && getline(file_lang, buffer)) {
 				if (buffer == "<LIST>") {
 					short i = 0;
@@ -101,7 +101,7 @@ void Block::setLang(string lang) {
 }
 
 //로고 도트 출력 함수(이름, 도트시작점 X좌표, 도트시작점 Y좌표)
-void Block::printLogo(string name, int X, int Y) {
+void cGraphic::printLogo(string name, int X, int Y) {
 	vector<vector<int>>logoColor;
 	vector<vector<string>>logo;
 
@@ -200,7 +200,7 @@ void Block::printLogo(string name, int X, int Y) {
 }
 
 /*가장 첫 시작화면 그래픽 출력함수*/
-void Block::printTitle(int coin) {
+void cGraphic::printTitle(int coin) {
 	gotoXY(17, 11);
 	txtcolor(15);
 	cout << "♥PRESS ANY KEY TO START♥";
@@ -222,8 +222,8 @@ void Block::printTitle(int coin) {
 }
 
 /*도움말 페이지 출력함수*/
-void Block::printHelp(short a, short b) {
-	printLogo("HELP", 10, 4);
+void cGraphic::printHelp(short a, short b) {
+	printLogo("SCENE_HELP", 10, 4);
 	gotoXY(0, 29);
 	cout << "‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗" <<
 		endl << "‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗";
@@ -272,8 +272,8 @@ void Block::printHelp(short a, short b) {
 }
 
 /*상점 페이지 출력함수*/
-void Block::printShop() {
-	printLogo("SHOP", 10, 4);
+void cGraphic::printShop() {
+	printLogo("SCENE_SHOP", 10, 4);
 	gotoXY(0, 29);
 	cout << "‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗" <<
 		endl << "‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗";
@@ -296,7 +296,7 @@ void Block::printShop() {
 }
 
 //게임페이지 출력
-void Block::printGamePage() {
+void cGraphic::printGamePage() {
 	//게임 로고 프린트
 	printLogo("MAIN", 15, 3);
 	txtcolor(15);
@@ -316,7 +316,7 @@ void Block::printGamePage() {
 	}//for i end
 	gamePage_downLine();
 }//printGamePage 끝
-void Block::printBlock(int number, int X, int Y)
+void cGraphic::printBlock(int number, int X, int Y)
 {
 	int color = 0;
 	this->number = number;
@@ -481,12 +481,12 @@ void Block::printBlock(int number, int X, int Y)
 	}//switch끝
 	}
 /*게임페이지 관련*/
-void Block::gamePage_downLine() {
+void cGraphic::gamePage_downLine() {
 	gotoXY(0, 49);
 	cout << gamePage_downLine1 << endl << gamePage_downLine2;
 
 }
-void Block::printGamePage_item(string a_name, int a, string b_name, int b, string c_name, int c) {
+void cGraphic::printGamePage_item(string a_name, int a, string b_name, int b, string c_name, int c) {
 	gotoXY(24, 52);
 	cout << "< 아이템 >" << endl << endl;
 

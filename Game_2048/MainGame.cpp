@@ -50,13 +50,13 @@ short MainGame::titlePage()
 		case 0:
 			switch (_getch()) {
 			case 59:
-				return HELP;
+				return SCENE_HELP;
 				break;
 
 			case 60:
-				return SHOP;
+				return SCENE_SHOP;
 				break;
-			default: return GAME;
+			default: return SCENE_GAME;
 			}
 			  break;
 
@@ -76,12 +76,12 @@ short MainGame::titlePage()
 				system("PAUSE");				
 			}
 			txtcolor(15);
-			return TITLE;
+			return SCENE_TITLE;
 			break;
 
 		default:
 			system("cls");
-			return GAME;
+			return SCENE_GAME;
 		
 	}
 
@@ -115,22 +115,22 @@ short MainGame::helpPage() {
 		}
 		else {
 			switch (btn) {
-			case 27: return TITLE;
+			case 27: return SCENE_TITLE;
 			case 49: graphic.printHelp(list_number, 1); list_number = 1; break;
 			case 50: graphic.printHelp(list_number, 2); list_number = 2; break;
 			case 51: graphic.printHelp(list_number, 3); list_number = 3; Sleep(300); break;
-			case 52: graphic.printHelp(list_number, 4); Sleep(300); return TITLE;
+			case 52: graphic.printHelp(list_number, 4); Sleep(300); return SCENE_TITLE;
 			case 32: //스페이스바
 				if (list_number == 3) {
 					
 				}
-				else if (list_number == 4) return TITLE;
+				else if (list_number == 4) return SCENE_TITLE;
 				   break;
 			case 13://엔터
 				if (list_number == 3) {
 
 				}
-				else if (list_number == 4) return TITLE;
+				else if (list_number == 4) return SCENE_TITLE;
 				break;
 			}//switch
 		}
@@ -165,7 +165,7 @@ short MainGame::shopPage() {
 			}
 				break;
 
-		case 27: return TITLE;
+		case 27: return SCENE_TITLE;
 		}
 		graphic.printGamePage_item(game.getName_eraser(), game.getEa_eraser(), game.getName_shaker(), game.getEa_shaker(), game.getName_doubler(), game.getEa_doubler());
 	}
@@ -248,7 +248,7 @@ short MainGame::mainGamePage() {
 
 		while (1) {
 			key = _getch();
-			if (key == 27) return TITLE;
+			if (key == 27) return SCENE_TITLE;
 			if (key == 32) break;
 		}
 	} while (key == 32);
@@ -261,19 +261,19 @@ MainGame::MainGame()
 	while (1) {
 
 		switch (pageBtn) {
-		case TITLE : 
+		case SCENE_TITLE : 
 			system("cls");
 			pageBtn = titlePage();
 			break;
-		case HELP: 
+		case SCENE_HELP: 
 			system("cls"); 
 			pageBtn = helpPage();
 			break;
-		case SHOP :
+		case SCENE_SHOP :
 			system("cls"); 
 			pageBtn = shopPage();
 			break;
-		case GAME: 
+		case SCENE_GAME: 
 			system("cls"); 
 			pageBtn = mainGamePage();
 			break;

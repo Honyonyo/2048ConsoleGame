@@ -14,10 +14,10 @@ using namespace std;
 /*
 주요 키워드들을 #define으로 숫자 선언해준 뒤 편리하게 이용함
 */
-#define TITLE 00
-#define HELP 100
-#define SHOP 200
-#define GAME 300
+#define SCENE_TITLE 0x0000
+#define SCENE_HELP 0x0010
+#define SCENE_SHOP 0x0020
+#define SCENE_GAME 0x0030
 
 #define BLOCK_2 0
 #define BLOCK_4 1
@@ -40,13 +40,11 @@ using namespace std;
 static void txtcolor(int color)
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
-
 }
 static void txtcolor(int tcolor, int bcolor)
 {
 	int color = tcolor + bcolor * 16;
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
-
 }
 static void gotoXY(short X, short Y) {
 	COORD pos = { X,Y };
@@ -77,8 +75,7 @@ static string utf32_to_utf8(std::u32string utf32_string)
 파일입출력시 특수문자 껴있는 경우 깨질 수도 있으니
 메모장에서 인코딩 utf-8로 해줘야한다.
 */
-class Block
-
+class cGraphic
 {
 private:
 	int number;
@@ -243,8 +240,8 @@ private:
 
 public:
 
-	Block();
-	~Block();
+	cGraphic();
+	~cGraphic();
 	void setLang(string lang);
 	void printLogo(string name, int X, int Y);
 

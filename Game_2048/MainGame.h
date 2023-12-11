@@ -9,9 +9,8 @@
 
 class MainGame {
 private:
-	Block graphic;
+	cGraphic graphic;
 	Game2048 game;	//,,,이걸 생성자에 넣었었는데 생성자도 함수인지라 발동끝나면 접근이 안되므로 아예 선언하고시작
-
 
 	int* gameBoard[4][4];
 	int key=0;
@@ -35,7 +34,5 @@ public:
 
 	MainGame();
 	~MainGame();
-
-
 };
 
