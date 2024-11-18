@@ -1,0 +1,59 @@
+@startuml 클래스 구조도
+' 게임 메인 동작
+class MainGame{
+    Game2048 game
+    Graphic graphic
+
+    int* gameBoard[4][4]
+    int key
+    int coin
+
+
+    mainGamePage()
+    printBoard()\nㄴgraphic.printBlock()
+
+    titlePage()
+    helpPage()
+    shopPage()
+}
+
+class Game2048{
+    
+}
+
+class cGraphic{
+
+printBlock()
+}
+
+Game2048 <. MainGame
+cGraphic <. MainGame
+
+
+' 아이템 관련
+class Item{
+
+}
+
+class ItemDouble{
+
+}
+
+class ItemShake{
+
+}
+
+class ItemEraser{
+    
+}
+
+ItemDouble -> Item
+ItemShake -> Item
+ItemEraser -> Item
+
+ItemDouble <. Game2048
+ItemShake <. Game2048
+ItemEraser <. Game2048
+
+
+@enduml
