@@ -1,0 +1,1 @@
+start "" "Game_2048/Game_2048.sln"
